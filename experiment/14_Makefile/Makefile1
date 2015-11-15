@@ -1,0 +1,12 @@
+#hello:hello.o
+#	gcc hello.o -o hello
+#hello.o:hello.c hello.h
+#	gcc -c hello.c -o hello.o
+
+OBJS1:=hello.o
+OBJS2:=hello.c hello.h
+CC:=gcc
+hello:$(OBJS1)
+	$(CC) $^ -o $@
+$(OBJS1):$(OBJS2)
+	$(CC) -c $< -o $@
